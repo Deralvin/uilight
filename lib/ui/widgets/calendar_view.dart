@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_date_pickers/flutter_date_pickers.dart' as dp;
 import 'package:flutter_date_pickers/flutter_date_pickers.dart';
+import 'package:uilight/constanta/Colors.dart';
 import 'package:uitypo/common_main_canvas.dart';
 
 /// Page with [dp.DayPicker].
@@ -52,6 +53,7 @@ class _DayPickerPageState extends State<CalendarView> {
     );
 
     return CommonMainCanvas(
+      appBarBgColor: bgcolor,
       title: Text("Date"),
       body: Center(
         child:Column(
@@ -84,11 +86,13 @@ class _DayPickerPageState extends State<CalendarView> {
     setState(() {
       _selectedDate = newDate;
     });
+    Navigator.pop(context,newDate.toString().substring(0,10));
+    print(newDate);
   }
 
   // ignore: prefer_expression_function_bodies
   bool _isSelectableCustom (DateTime day) {
-    return day.weekday < 6;
+    return day.weekday < 8;
   }
 
 

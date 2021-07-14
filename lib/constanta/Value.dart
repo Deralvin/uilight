@@ -6,4 +6,8 @@ class Value{
      JurusanModel(cabang: "BEKASI",alamat: "MEGA BEKASI HYPERMALL, JL A YANI NO 1 RT004/RW001, MARGA JAYA, KEC BEKASI SEL, KOTA BKS, JAWA BARAT",jurusan: "MEGA BEKASI HYPERMALL",singkatan: "MBH"),
      JurusanModel(cabang: "CIKARANG",alamat: "JL MH THAMRIN KAV 100, CIBATU, SUKARESMI, CIKARANG SEL, BEKASI, JAWA BARAT",jurusan: "CITYWALK LIPPO CIKARANG",singkatan: "LPC"),
   ];
+
+   List<JurusanModel> jurusanTujuan = [
+     JurusanModel(cabang: "CIKARANG",alamat: "LIVING PLAZA JABABEKA, KAWASAN INDUSTRI JABABEKA",jurusan: "LIVING PLAZA JABABEKA",singkatan: "LPB"),
+   ];
 }

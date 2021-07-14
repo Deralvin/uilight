@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class GroupSeparator extends StatelessWidget{
   final String? cabang;
@@ -8,11 +9,12 @@ class GroupSeparator extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return  Container(
+      color: Colors.black38  ,
       child: Padding(
-        padding: EdgeInsets.only(left: 16, top: 8, bottom: 8),
+        padding: EdgeInsets.only(left: 5, top: 8, bottom: 8),
         child: Text(
           "$cabang",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle( fontWeight: FontWeight.bold),
         ),
       ),
     );
