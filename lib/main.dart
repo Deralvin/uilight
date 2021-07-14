@@ -1,5 +1,6 @@
 import 'package:uilight/ui/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:uilight/ui/schedule_view.dart';
 import 'package:uitypo/uitypo.dart';
 void main() {
   runApp(const MyApp());
