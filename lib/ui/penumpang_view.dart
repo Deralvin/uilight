@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uilight/constanta/Colors.dart';
+import 'package:uilight/ui/payment_view.dart';
 import 'package:uilight/ui/widgets/common_text.dart';
 import 'package:uilight/ui/widgets/group_separator.dart';
 import 'package:uitypo/common_main_canvas.dart';
@@ -97,8 +98,8 @@ class _PenumpangViewState extends State<PenumpangView> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                   ),
-                  onPressed: ()=>print("d"),
-                  child: Text("PILIH"),
+                  onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder:(context)=> PaymentView())),
+                  child: Text("PILIH PEMBAYARAN"),
                 ),
               )
             ],

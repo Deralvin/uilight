@@ -4,6 +4,7 @@ import 'package:circular_countdown/circular_countdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uilight/constanta/Colors.dart';
+import 'package:uilight/ui/penumpang_view.dart';
 import 'package:uitypo/common_button_icon.dart';
 import 'package:uitypo/common_main_canvas.dart';
 
@@ -62,34 +63,41 @@ class _SeatViewState extends State<SeatView>{
               )
             ),
             SizedBox(height: 14,),
-            Card(
-              child: GridView.builder(
-                itemCount: 20,
-                itemBuilder: (ctx,idx){
-                  int colorNumber = randomNumber();
-                  bool selected = false;
-                  if(idx == 3){
-                    return Container(
+            Expanded(
+              child:SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                primary: true,
+                physics: AlwaysScrollableScrollPhysics(),
+                child:Card(
+                    child: GridView.builder(
+                      itemCount: 20,
+                      itemBuilder: (ctx,idx){
+                        int colorNumber = randomNumber();
+                        bool selected = false;
+                        if(idx == 3){
+                          return Container(
 
-                      color: Colors.grey,
-                      child: Text("${idx+1}"),
-                      // dummy widget to fill [1, 1]
-                    );
-                  }else{
-                   return Container(
-                        child: Text("${idx+1}"),
-                        color: colors[colorNumber]
-                      // dummy widget to fill [1, 1]
-                    );
+                            color: Colors.grey,
+                            child: Text("${idx+1}"),
+                            // dummy widget to fill [1, 1]
+                          );
+                        }else{
+                          return Container(
+                              child: Text("${idx+1}"),
+                              color: colors[colorNumber]
+                            // dummy widget to fill [1, 1]
+                          );
 
-                  }
+                        }
 
-                },
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                      },
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                      ),
+                    )
                 ),
-              )
+              ),
             ),
             Container(
               padding: EdgeInsets.all(10),
@@ -106,7 +114,7 @@ class _SeatViewState extends State<SeatView>{
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                     ),
-                    onPressed: ()=>print("d"),
+                    onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder:(context)=> PenumpangView())),
                     child: Text("PILIH"),
                   )
                 ],
