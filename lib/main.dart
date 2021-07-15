@@ -1,5 +1,6 @@
 import 'package:uilight/ui/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:uilight/ui/penumpang_view.dart';
 import 'package:uilight/ui/schedule_view.dart';
 import 'package:uitypo/uitypo.dart';
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeView(),
+      home: PenumpangView(),
     );
   }
 }

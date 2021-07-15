@@ -32,6 +32,7 @@ dependencies:
   uitypo: ^0.0.3
   flutter_date_pickers: ^0.2.4
   grouped_list: ^3.2.3
+  circular_countdown: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

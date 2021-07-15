@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:uilight/constanta/Colors.dart';
+import 'package:uilight/ui/seat_view.dart';
 import 'package:uilight/ui/widgets/list_jurusan_widget.dart';
 import 'package:uitypo/common_main_canvas.dart';
 
@@ -19,7 +21,12 @@ class _ScheduleViewState extends State<ScheduleView>{
         child: ListView.builder(
           itemCount: 5,
           itemBuilder: (context,idx){
-            return ListJurusanWidget();
+            return InkWell(
+              onTap: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>SeatView()));
+              },
+              child:ListJurusanWidget(),
+            );
           },
         ),
       ),

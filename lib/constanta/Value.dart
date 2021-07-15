@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:uilight/model/jurusan_model.dart';
 class Value{
    List<JurusanModel> jurusanawal = [
@@ -9,5 +10,9 @@ class Value{
 
    List<JurusanModel> jurusanTujuan = [
      JurusanModel(cabang: "CIKARANG",alamat: "LIVING PLAZA JABABEKA, KAWASAN INDUSTRI JABABEKA",jurusan: "LIVING PLAZA JABABEKA",singkatan: "LPB"),
+   ];
+
+   List<Widget> seats = [
+
    ];
 }
