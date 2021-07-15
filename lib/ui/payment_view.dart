@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:uilight/constanta/Colors.dart';
 import 'package:uilight/constanta/Value.dart';
 import 'package:uilight/model/pembayaran_model.dart';
+import 'package:uilight/ui/voucher_view.dart';
 import 'package:uilight/ui/widgets/common_colapse.dart';
 import 'package:uilight/ui/widgets/common_text.dart';
 import 'package:uitypo/common_main_canvas.dart';
@@ -42,7 +43,9 @@ class _PaymentViewState extends State<PaymentView>{
                       primary: Colors.green,
 
                     ),
-                    onPressed: () {  },
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>VoucherView()));
+                    },
                     child: Text("GUNAKAN"),
                   )
                 ],
