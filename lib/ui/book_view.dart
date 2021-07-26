@@ -168,7 +168,7 @@ class _BookViewState extends State<BookView>{
                     hintText: 'Pilih Cabang',
                     icon: Icon(Icons.calendar_today,color: Colors.amberAccent,)
                 ),
-              ),
+                ),
             ),
             Padding(
               padding: EdgeInsets.all(15),

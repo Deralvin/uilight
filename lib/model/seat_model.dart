@@ -106,8 +106,9 @@ class Petalayout {
     this.nominal,
     this.isagenverified,
     this.issmoking,
+    this.count =0
   });
-
+  int count;
   String? status;
   String? label;
   dynamic tglberangkat;

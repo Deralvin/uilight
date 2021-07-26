@@ -7,9 +7,12 @@ import 'package:uilight/constanta/Colors.dart';
 import 'package:uilight/model/seat_model.dart';
 import 'package:uilight/ui/penumpang_view.dart';
 import 'package:uilight/ui/widgets/common_text.dart';
+import 'package:uilight/ui/widgets/grid_item.dart';
 import 'package:uitypo/common_button_icon.dart';
 import 'package:uitypo/common_main_canvas.dart';
 import 'package:uilight/constanta/Value.dart';
+import 'package:multi_select_item/multi_select_item.dart';
+import 'package:tuple/tuple.dart';
 class SeatView extends StatefulWidget{
   @override
   _SeatViewState createState()=> _SeatViewState();
@@ -19,92 +22,47 @@ class _SeatViewState extends State<SeatView>{
   List<Color> colors=[Colors.white,Colors.red,Colors.blue];
   Color _containerColor = Colors.blue;
   Value values = new Value();
-  List<Widget> data = [];
+  List<Petalayout> data = [];
+  List<Tuple2<bool,String>> onTaps = [];
+  final List<IconData> _icons = [
+    Icons.offline_bolt,
+    Icons.ac_unit,
+    Icons.dashboard,
+    Icons.backspace,
+    Icons.cached,
+    Icons.edit,
+    Icons.face,
+  ];
+  int counter = 0;
+  List<dynamic> _selectedIcons = [];
+  List<Petalayout> seat(){
 
-  List<Widget>seat(){
-    int counter = 0;
     values.valueseat.petalayout.forEach((key, value) {
       counter++;
-      if(value.status=="block"){
-        data.add(
-            Container(
-
-              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-              decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  border: Border.all(color: Colors.grey)
-              ),
-
-              child:Center(
-                  child:CommonText(
-                    text: "$counter",
-                    textStyle: TextStyle(
-                        color: Colors.white,
-                      fontSize: 17
-                    ),
-                  )
-              ))
-        );
-      }else if(value.status == "x"){
-        data.add(
-            Container(
-
-              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  border: Border.all(color: Colors.white)
-              ),
-            )
-        );
-      }else if(value.status == 'p'){
-        data.add(
-          GestureDetector(
-            onTap: (){
-
-            },
-            child:Container(
-
-              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  border: Border.all(color: Colors.grey)
-              ),
-
-              child:Center(
-                  child:CommonText(
-                    text: "$counter",
-                    textStyle: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 17
-                    ),
-                  )
-              )),
-          )
-        );
-      }else{
-        data.add(
-            Container(
-
-              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(300)),
-                  border: Border.all(color: Colors.green)
-              ),
-
-              child:Center(
-                child:CommonText(
-                  text: "SUPIR",
-                  textStyle: TextStyle(
-                    color: Colors.green
-                  ),
-                )
-              )
-            )
-        );
-      }
-
+      print(value);
+      data.add(new Petalayout(
+        label: value.label,
+        dek: value.dek,
+        idoutletdropoff: value.idoutletdropoff,
+        idoutletpickup: value.idoutletpickup,
+        idproduk: value.idproduk,
+        isagenverified: value.isagenverified,
+        isboarding: value.isboarding,
+        iscetaktiket: value.iscetaktiket,
+        issmoking: value.issmoking,
+        istransit: value.istransit,
+        jenispembayaran: value.jenispembayaran,
+        kodebooking: value.kodebooking,
+        kodepromo: value.kodepromo,
+        nama: value.nama,
+        namapromo: value.namapromo,
+        nominal: value.nominal,
+        notiket: value.notiket,
+        status: value.status,
+        tglberangkat: value.tglberangkat,
+        waktupesan: value.waktupesan,
+        count: counter
+      ));
     });
     return data;
   }
@@ -124,6 +82,7 @@ class _SeatViewState extends State<SeatView>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return CommonMainCanvas(
       title: Text("Pilih Kursi"),
       appBarBgColor: bgcolor,
@@ -162,7 +121,25 @@ class _SeatViewState extends State<SeatView>{
                 children: [
                   Card(
                       child: GridView(
-                        children: data,
+                        children: data.map((values){
+                          setState(() {
+                            counter++;
+                          });
+                          return GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                if(values.status=='p'){
+                                  if(_selectedIcons.contains(values)){
+                                    _selectedIcons.remove(values);
+                                  }else{
+                                    _selectedIcons.add(values);
+                                  }
+                                }
+                              });
+                            },
+                            child: GridViewItem(_selectedIcons.contains(values),values)
+                          );
+                        }).toList(),
                         shrinkWrap: true,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: int.parse(values.valueseat.kolom),
@@ -199,5 +176,18 @@ class _SeatViewState extends State<SeatView>{
     );
     throw UnimplementedError();
   }
+  Future<int> returndata() async{
+    setState(() {
+      counter++;
+    });
+    return counter;
+  }
 
+}
+
+class Item {
+  String data;
+  int rank;
+
+  Item(this.data, this.rank);
 }
